@@ -1,27 +1,54 @@
 # Code book
 
-## Features Feature Selection
+## Files
 
-The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz.
+Below there  is a description of the files that contained the data necessary for this course project and how each file was read into R:
 
-Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag).
+features.txt
+a text file containing 561 'features' that describe each observation of the data. Each feature represents a column.
 
-Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals).
+activity_labels.txt
+a text file containing the different activities and their code.
 
-These signals were used to estimate variables of the feature vector for each pattern:
-'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+xtest.txt
+a text file that contains data on each features for 2947 observations of the test subset of volunteers.
 
-tBodyAcc-XYZ tGravityAcc-XYZ tBodyAccJerk-XYZ tBodyGyro-XYZ tBodyGyroJerk-XYZ tBodyAccMag tGravityAccMag tBodyAccJerkMag tBodyGyroMag tBodyGyroJerkMag fBodyAcc-XYZ fBodyAccJerk-XYZ fBodyGyro-XYZ fBodyAccMag fBodyAccJerkMag fBodyGyroMag fBodyGyroJerkMag
+ytest.txt
+a text file that contains the corresponding activity ID for each of the 2947 observations of the test subset of volunteers.
 
-The set of variables that were estimated from these signals are:
+subject_test.txt
+a text file that contains the corresponding participant ID for each of the 2947 observations of the test subset of volunteers.
 
-mean(): Mean value std(): Standard deviation mad(): Median absolute deviation max(): Largest value in array min(): Smallest value in array sma(): Signal magnitude area energy(): Energy measure. Sum of the squares divided by the number of values. iqr(): Interquartile range entropy(): Signal entropy arCoeff(): Autorregresion coefficients with Burg order equal to 4 correlation(): correlation coefficient between two signals maxInds(): index of the frequency component with largest magnitude meanFreq(): Weighted average of the frequency components to obtain a mean frequency skewness(): skewness of the frequency domain signal kurtosis(): kurtosis of the frequency domain signal bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window. angle(): Angle between to vectors.
+xtrain.txt
+a text file that contains data on each features for 7352 observations of the train subset of volunteers.
 
-Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+ytrain.txt
+a text file that contains the corresponding activity ID for each of the 7352 observations of the train subset of volunteers.
 
-gravityMean tBodyAccMean tBodyAccJerkMean tBodyGyroMean tBodyGyroJerkMean
+subject_train.txt
+a text file that contains the corresponding participant ID for each of the 7352 observations of the train subset of volunteers.
 
-The complete list of variables of each feature vector is available in 'features.txt'
+## Variables
+
+Below there is a concise summary of all the variables used in the run_analysis.R script:
+
+features: 561 x 2 provides the names of all of the features (columns) in the xtrain/xtest data sets
+activitie_labels: 6 x 2 provides the correlation between activity number and activity name in the test data subset
+X_test: 2947 x 561 provides values for the 561 features across 2947 observations in the test data subset
+X_train: 7352 x 561 provides values for the 561 features across 7352 observations in the train data subset
+X: 10299 x 561 (merges X_test and X_train)
+y_test: 2947 x 1 provides the activity for each of the 2947 recorded observations in the test data subset
+y_train: 7352 x 1 provides the activity for each of the 7352 recorded observations in the train data subset
+y: 10299 x 1 (merges y_test and y_train)
+subject_test: 2947 x 1 provides the subject (i.e. ParticipantID) for each of the 2947 recorded observations
+subject_train: 7352 x 1 provides the subject (i.e. ParticipantID) for each of the 7352 recorded observations in the train data subset
+subject: 10299 x 1 (merges subject_test and subject_train)
+features: 531 x 2 data from features.txt
+featuresX: 10299 x 79 data from X but with just features as columns
+y_labeled: 10299 x 1 data from 'y' but substituting codes to activities
+feats: 79 char vector with changed column names
+df: 10299 x 81 data from the subject, featuresX and y_labeled
+tidy_dataset: 180 x 81 the average value of features that only reference mean & std, grouped by activity and subject
 
 ## Process
 
@@ -106,3 +133,4 @@ tidy_dataset <- df %>%
 write.table(tidy_dataset, "tidy_dataset.txt", row.name=FALSE)
 
 ```
+
