@@ -48,9 +48,9 @@ names(y_labeled) <- "activity"
 feats <- features[grep("mean()|std()", features$V2),][[2]]
 
 # Descriptive variable names
-feats <- gsub('^f', "frecuency", feats)
-feats <- gsub('^t', "time", feats)
-feats <- gsub('Acc', 'Accelerometer', feats)
+feats <- gsub('^f', "Frequency", feats)
+feats <- gsub('^t', "Time", feats)
+feats <- gsub('Acc', 'Acceleration', feats)
 feats <- gsub('Gyro', 'Gyroscope', feats)
 feats <- gsub('Mag', 'Magnitude', feats)
 feats <- gsub('BodyBody', 'Body', feats)
