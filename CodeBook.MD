@@ -34,7 +34,7 @@ Below there is a concise summary of all the variables used in the run_analysis.R
 
 features: 561 x 2 provides the names of all of the features (columns) in the xtrain/xtest data sets
 
-activitie_labels: 6 x 2 provides the correlation between activity number and activity name in the test data subset
+activity_labels: 6 x 2 provides the correlation between activity number and activity name in the test data subset
 
 X_test: 2947 x 561 provides values for the 561 features across 2947 observations in the test data subset
 
