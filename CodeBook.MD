@@ -33,21 +33,37 @@ a text file that contains the corresponding participant ID for each of the 7352 
 Below there is a concise summary of all the variables used in the run_analysis.R script:
 
 features: 561 x 2 provides the names of all of the features (columns) in the xtrain/xtest data sets
+
 activitie_labels: 6 x 2 provides the correlation between activity number and activity name in the test data subset
+
 X_test: 2947 x 561 provides values for the 561 features across 2947 observations in the test data subset
+
 X_train: 7352 x 561 provides values for the 561 features across 7352 observations in the train data subset
+
 X: 10299 x 561 (merges X_test and X_train)
+
 y_test: 2947 x 1 provides the activity for each of the 2947 recorded observations in the test data subset
+
 y_train: 7352 x 1 provides the activity for each of the 7352 recorded observations in the train data subset
+
 y: 10299 x 1 (merges y_test and y_train)
+
 subject_test: 2947 x 1 provides the subject (i.e. ParticipantID) for each of the 2947 recorded observations
+
 subject_train: 7352 x 1 provides the subject (i.e. ParticipantID) for each of the 7352 recorded observations in the train data subset
+
 subject: 10299 x 1 (merges subject_test and subject_train)
+
 features: 531 x 2 data from features.txt
+
 featuresX: 10299 x 79 data from X but with just features as columns
+
 y_labeled: 10299 x 1 data from 'y' but substituting codes to activities
+
 feats: 79 char vector with changed column names
+
 df: 10299 x 81 data from the subject, featuresX and y_labeled
+
 tidy_dataset: 180 x 81 the average value of features that only reference mean & std, grouped by activity and subject
 
 ## Process
